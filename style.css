@@ -1,1 +1,80 @@
-/*  I'll make the best design to the best music player here!
+/*  I'll make the best design to the best music player here!    */
+
+:root
+{
+    /*  green colors    */
+
+    --color-green-100: #4ce0d1;
+    --color-green-100-op: #4ce0d180;
+    --color-green-200: #22AAA1;
+    --color-green-300: #136F63;
+    --color-green-400: #041B15;
+
+    /*  white colors    */
+    --color-white--100: #F8FFE5;
+
+    /*  Sizes   */
+    --size-music-progress-bar-controller: 10px;
+    --size-music-progress-bar-h: 50px;
+    --size-music-progress-bar-line: 2px;
+
+    --current-progress-bar-percent: 0%;
+}
+
+body
+{
+    background-color: var(--color-green-400);
+    margin: 0;
+    overflow-x: hidden;
+}
+
+#music-progress-bar-panel
+{
+    background-color: var(--color-green-100-op);
+    min-height: var(--size-music-progress-bar-h);
+    position: absolute;
+    bottom: 0;
+    left: -5vw;
+    width: 110vw;
+    filter: blur(0);
+    filter: blur(40px);
+    /* backdrop-filter: blur(1px); */
+}
+
+#music-progress-bar
+{
+    border-top: solid 1px var(--color-white--100);
+    min-height: var(--size-music-progress-bar-controller);
+    min-width: var(--size-music-progress-bar-controller);
+    position: absolute;
+    border-radius: 50%;
+    left: calc(var(--current-progress-bar-percent) - var(--size-music-progress-bar-controller) / 2);
+    bottom: calc(var(--size-music-progress-bar-h) - var(--size-music-progress-bar-controller) / 2);
+    background-color: var(--color-white--100);
+    filter: blur(0);
+}
+
+#music-progress-bar-line
+{
+    min-width: 100vw;
+    border-top: solid var(--size-music-progress-bar-line) var(--color-white--100);
+    position: absolute;
+    bottom: calc(var(--size-music-progress-bar-h) - var(--size-music-progress-bar-line) / 2);
+}
+
+#music-progress-bar-line::before
+{
+    width: var(--current-progress-bar-percent);
+    content: '';
+    border-top: solid var(--size-music-progress-bar-line) var(--color-green-200);
+    position: absolute;
+    top: calc(var(--size-music-progress-bar-line) * -1);
+    left: 0;
+}
+
+#music-progress-bar:hover
+{
+    height: 10px;
+    width: 10px;
+    bottom: calc(var(--size-music-progress-bar-h) - 10px / 2);
+}
